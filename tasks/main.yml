@@ -1,0 +1,40 @@
+- name: Check conga_environment variable.
+  fail:
+    msg: 'CONGA target environment is undefined'
+  when: conga_environment is undefined
+
+- block:
+  - name: Set CONGA base directory.
+    set_fact:
+      conga_basedir: "{{ conga_git_root }}/{{ conga_maven_root }}"
+
+  - name: Create git root.
+    file:
+      path: "{{ conga_git_root }}"
+      state: directory
+
+  - name: Clone CONGA configuration repository.
+    git:
+      repo: "{{ conga_repository }}"
+      dest: "{{ conga_git_root }}"
+      version: "{{ conga_branch|default(omit) }}"
+      force: yes
+      accept_hostkey: true
+  when: conga_repository is defined
+
+- name: Build Maven command line.
+  set_fact:
+    _mvn_cmdline: "{{ conga_maven_cmd }} {{ conga_maven_opts }} clean compile"
+
+- name: Add custom Maven settings.
+  set_fact:
+    _mvn_cmdline: "{{ _mvn_cmdline }} --settings={{ conga_maven_settings }}"
+  when: conga_maven_settings is defined
+
+- name: Compile CONGA configuration with Maven.
+  shell: "{{ _mvn_cmdline }}"
+  args:
+    chdir: "{{ conga_basedir }}"
+
+- name: Set fact that CONGA configuration was generated
+  set_fact: conga_configuration_generated=true
