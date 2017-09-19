@@ -1,11 +1,11 @@
-conga_tempdir: /tmp
-conga_git_root: "{{ conga_tempdir }}/git"
+# conga_environment
+# conga_basedir
 
 conga_maven_root: configuration
 conga_maven_cmd: mvn
 conga_maven_opts: "-B -U -Dconga.environments={{ conga_environment }}"
-
-conga_branch: develop
 # conga_maven_settings:
-# conga_repository:
-# conga_basedir:
+
+# conga_maven_git_repo:
+conga_maven_git_root: /tmp/git
+conga_maven_git_branch: develop

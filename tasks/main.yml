@@ -6,21 +6,21 @@
 - block:
   - name: Set CONGA base directory.
     set_fact:
-      conga_basedir: "{{ conga_git_root }}/{{ conga_maven_root }}"
+      conga_basedir: "{{ conga_maven_git_root }}/{{ conga_maven_root }}"
 
   - name: Create git root.
     file:
-      path: "{{ conga_git_root }}"
+      path: "{{ conga_maven_git_root }}"
       state: directory
 
   - name: Clone CONGA configuration repository.
     git:
-      repo: "{{ conga_repository }}"
-      dest: "{{ conga_git_root }}"
-      version: "{{ conga_branch|default(omit) }}"
+      repo: "{{ conga_maven_git_repo }}"
+      dest: "{{ conga_maven_git_root }}"
+      version: "{{ conga_maven_git_branch|default(omit) }}"
       force: yes
       accept_hostkey: true
-  when: conga_repository is defined
+  when: conga_maven_git_repo is defined
 
 - name: Build Maven command line.
   set_fact:
