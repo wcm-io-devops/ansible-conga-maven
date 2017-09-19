@@ -53,20 +53,20 @@ Example Playbook
 
 1) Generate [CONGA example configuration](https://github.com/wcm-io-devops/conga/tree/develop/example) for environment `prod`:
 
-    - hosts: localhost
-      vars:
-        conga_environment: prod
-      roles:
-        - { role: conga-maven,
-            conga_maven_git_repo: "https://github.com/wcm-io-devops/conga.git",
-            conga_maven_git_branch: master,
-            conga_maven_root: example }
+        - hosts: localhost
+          vars:
+            conga_environment: prod
+          roles:
+            - { role: conga-maven,
+                conga_maven_git_repo: "https://github.com/wcm-io-devops/conga.git",
+                conga_maven_git_branch: master,
+                conga_maven_root: example }
 
 2) Generate CONGA configuration for environment `dev` from local directory `config-definition`:
 
-    - hosts: localhost
-      vars:
-        conga_environment: dev
-      roles:
-        - { role: conga-maven,
-            conga_basedir: config-definition }
+        - hosts: localhost
+          vars:
+            conga_environment: dev
+          roles:
+            - { role: conga-maven,
+                conga_basedir: config-definition }
