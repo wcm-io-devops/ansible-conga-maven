@@ -1,11 +1,21 @@
-# conga_environment
-# conga_basedir
+# Name of the CONGA environment to generate the configuration for
+# conga_environment: prod
 
+# Base directory of the CONGA configuration
+# conga_basedir:
+
+# Root path of the CONGA configuration
 conga_maven_root: configuration
+# Maven command to execute
 conga_maven_cmd: mvn
+# Maven options (run in batch mode, update snapshots and only compile a single environment)
 conga_maven_opts: "-B -U -Dconga.environments={{ conga_environment }}"
-# conga_maven_settings:
+# Path of a custom settings file to use when running Maven
+# conga_maven_settings: ~/.m2/settings.xml
 
-# conga_maven_git_repo:
+# URI of the configuration Git repo
+# conga_maven_git_repo: "https://github.com/wcm-io-devops/conga.git"
+# Directory to clone the configuration into
 conga_maven_git_root: /tmp/git
+# Branch to checkout
 conga_maven_git_branch: develop
