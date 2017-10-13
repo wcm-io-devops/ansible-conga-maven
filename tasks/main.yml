@@ -24,7 +24,7 @@
 
 - name: Build Maven command line.
   set_fact:
-    _mvn_cmdline: "{{ conga_maven_cmd }} {{ conga_maven_opts }} clean compile"
+    _mvn_cmdline: "{{ conga_maven_cmd }} {{ conga_maven_opts }} compile"
 
 - name: Add custom Maven settings.
   set_fact:
