@@ -35,6 +35,7 @@
   shell: "{{ _mvn_cmdline }}"
   args:
     chdir: "{{ conga_basedir }}"
+  tags: conga-maven-compile
 
 - name: Set fact that CONGA configuration was generated
   set_fact: conga_configuration_generated=true
