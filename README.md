@@ -3,6 +3,11 @@
 This role generates the configuration for an [CONGA](http://devops.wcm.io/conga/) environment by running Maven.
 The role can either use a configuration definition (e.g. in the same repository as the Ansible setup) or a configuration Git repository which the role with clone and update as required.
 
+> This role was developed as part of the
+> [wcm.io DevOps Ansible Automation for AEM](http://devops.wcm.io/ansible-aem/)
+> to integrate Ansible with
+> [CONGA](http://devops.wcm.io/conga/).
+
 ## Requirements
 
 This role requires Maven to be installed and optionally Git if you want the role to use a Git repository for the configuration. Both Maven and Git need to be properly pre-configured to be able to access the repositories and artifacts used in the CONGA setup.
