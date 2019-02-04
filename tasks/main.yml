@@ -32,7 +32,7 @@
   when: conga_maven_settings is defined
 
 - name: Compile CONGA configuration with Maven.
-  shell: "{{ _mvn_cmdline }}"
+  shell: "{{ _mvn_cmdline }} | tee mvn-execution.log"
   args:
     chdir: "{{ conga_basedir }}"
   tags:
