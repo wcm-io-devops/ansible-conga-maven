@@ -33,6 +33,7 @@
 
 - name: Compile CONGA configuration with Maven.
   shell: "set -o pipefail; {{ _mvn_cmdline }} | tee mvn.log"
+  executable: "/bin/bash"
   args:
     chdir: "{{ conga_basedir }}"
   tags:
