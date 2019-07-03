@@ -8,6 +8,8 @@
 conga_maven_root: configuration
 # Maven command to execute
 conga_maven_cmd: mvn
+# Path to the Vault password file, defaults to Ansible configuration
+conga_maven_vault_password_file: "{{ lookup('config', 'DEFAULT_VAULT_PASSWORD_FILE') | default(omit)}}"
 # Maven options (run in batch mode, update snapshots and only compile a single environment)
 conga_maven_opts: "-B -U -Dconga.environments={{ conga_environment }}"
 # Path of a custom settings file to use when running Maven

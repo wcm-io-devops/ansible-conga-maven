@@ -31,6 +31,11 @@
     _mvn_cmdline: "{{ _mvn_cmdline }} --settings={{ conga_maven_settings }}"
   when: conga_maven_settings is defined
 
+- name: Add Maven Vault password file.
+  set_fact:
+    _mvn_cmdline: "{{ _mvn_cmdline }} -Dansible.vault.password.file={{ conga_maven_vault_password_file }}"
+  when: conga_maven_vault_password_file is defined
+
 - name: Compile CONGA configuration with Maven.
   shell: "{{ _mvn_cmdline }}"
   args:
