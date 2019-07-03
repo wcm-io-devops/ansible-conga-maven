@@ -46,7 +46,7 @@ If you want to use a Git configuration repository, you need to at least set the 
     # Path of a custom settings file to use when running Maven
     conga_maven_settings: ~/.m2/settings.xml
     # Path to the Vault password file, defaults to Ansible configuration
-    conga_maven_vault_password_file: "{{ lookup('config', 'DEFAULT_VAULT_PASSWORD_FILE') | default(omit)}}"
+    conga_maven_vault_password_file: "{{ lookup('config', 'DEFAULT_VAULT_PASSWORD_FILE') }}"
 
 These variables let you customize the way Maven is executed, e.g. supplying a full path for the Maven executable or supplying a custom settings file.
 
