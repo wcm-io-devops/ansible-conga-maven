@@ -28,7 +28,7 @@
 
 - name: Add custom Maven settings.
   set_fact:
-    _mvn_cmdline: "{{ _mvn_cmdline }} --settings={{ conga_maven_settings }}"
+    _mvn_cmdline: "{{ _mvn_cmdline }} --settings='{{ conga_maven_settings }}'"
   when: conga_maven_settings is defined and conga_maven_settings
 
 - name: Add Maven Vault password file.
