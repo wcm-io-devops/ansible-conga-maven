@@ -37,9 +37,10 @@
   when: conga_maven_vault_password_file is defined and conga_maven_vault_password_file
 
 - name: Compile CONGA configuration with Maven.
-  shell: "{{ _mvn_cmdline }}"
+  shell: "set -o pipefail; {{ _mvn_cmdline }} | tee mvn.log"
   args:
     chdir: "{{ conga_basedir }}"
+    executable: "/bin/bash"
   tags:
     - conga-maven-compile
     - skip_ansible_lint
