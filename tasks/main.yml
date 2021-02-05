@@ -1,25 +1,27 @@
+---
 - name: Check conga_environment variable.
   fail:
     msg: 'CONGA target environment is undefined'
   when: conga_environment is undefined
 
 - block:
-  - name: Set CONGA base directory.
-    set_fact:
-      conga_basedir: "{{ conga_maven_git_root }}/{{ conga_maven_root }}"
+    - name: Set CONGA base directory.
+      set_fact:
+        conga_basedir: "{{ conga_maven_git_root }}/{{ conga_maven_root }}"
 
-  - name: Create git root.
-    file:
-      path: "{{ conga_maven_git_root }}"
-      state: directory
+    - name: Create git root.
+      file:
+        path: "{{ conga_maven_git_root }}"
+        state: directory
+        mode: 0755
 
-  - name: Clone CONGA configuration repository.
-    git:
-      repo: "{{ conga_maven_git_repo }}"
-      dest: "{{ conga_maven_git_root }}"
-      version: "{{ conga_maven_git_branch|default(omit) }}"
-      force: yes
-      accept_hostkey: true
+    - name: Clone CONGA configuration repository.
+      git:
+        repo: "{{ conga_maven_git_repo }}"
+        dest: "{{ conga_maven_git_root }}"
+        version: "{{ conga_maven_git_branch|default(omit) }}"
+        force: yes
+        accept_hostkey: true
   when: conga_maven_git_repo is defined
 
 - name: Build Maven command line.
