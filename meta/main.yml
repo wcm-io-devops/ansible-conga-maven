@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: conga_maven
+  namespace: wcm_io_devops
   author: Martin Wehner
   description: Generates CONGA configuration
   company: pro!vision
